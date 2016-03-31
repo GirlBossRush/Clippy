@@ -10,18 +10,24 @@
         "type": "style"
       },
       {
-        "src": "vendor/jquery-2.2.2.min.js",
-        "type": "script"
-      },
-      {
         "src": "vendor/clippy.js",
-        "type": "script"
+        "type": "script",
+        "moduleType": "global",
+        "exports": [
+          "clippy"
+        ],
+        "depends": {
+          "github.com/jquery/jquery:jquery.js": "$"
+        }
       },
       {
         "type": "script",
         "src": "./build/app.js"
       }
     ]
+  },
+  "dependencies": {
+    "github.com/jquery/jquery": ">= 1.7.0, <= 1.10.2"
   },
   "preview": {
     "handlers": [
@@ -33,63 +39,19 @@
   },
   "options": {
     "properties": {
-      "agent": {
-        "default": "Clippy",
-        "description": "What character should appear on the site?",
+      "message": {
         "order": 1,
-        "title": "Character",
+        "title": "Message for Clippy to tell the user",
         "type": "string",
-        "enum": [
-          "Clippy",
-          "Bonzi",
-          "F1",
-          "Genie",
-          "Genius",
-          "Links",
-          "Merlin",
-          "Peedy",
-          "Rocky",
-          "Rover"
-        ]
+        "format": "textarea",
+        "default": "It looks like you're trying to browse a website! I'm here to help!"
       },
-      "askQuestion": {
+      "gotchaMessage": {
         "order": 2,
-        "title": "Ask the user a question",
-        "description": "Enable this to have the character present a list of questions.",
-        "type": "boolean",
-        "default": false
-      },
-      "question": {
-        "showIf": "askQuestion",
-        "order": 3,
-        "title": "What should the character say?",
-        "description": "This will appear in a speech bubble.",
-        "type": "string"
-      },
-      "choices": {
-        "showIf": "askQuestion",
-        "order": 4,
-        "type": "array",
-        "title": "What choices should be given?",
-        "description": "The response will be read after making a choice.",
-        "items": {
-          "title": "Choices",
-          "type": "object",
-          "properties": {
-            "text": {
-              "order": 1,
-              "title": "Choice text",
-              "placeholder": "Choice text",
-              "type": "string"
-            },
-            "answer": {
-              "order": 2,
-              "title": "Choice response",
-              "placeholder": "Choice response",
-              "type": "string"
-            }
-          }
-        }
+        "title": "Message for Clippy to say after a few seconds to reveal the joke",
+        "type": "string",
+        "format": "textarea",
+        "default": "Gotcha! Happy April Fools!"
       }
     }
   }

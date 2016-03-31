@@ -3,30 +3,48 @@
   if (!window.addEventListener) return
 
   const ASSET_PATH = "//s3.amazonaws.com/clippy.js/Agents/"
-  const RATE_LIMIT = 1500
+  const GOTCHA_DELAY = 1000 * 5
   let agent
+  let gotchaTimeout
   let options = INSTALL_OPTIONS
-  let rateTimeout
 
   function unmountNode(node) {
     if (node && node.parentNode) node.parentNode.removeChild(node)
   }
 
-  function updateElement() {
-    const {askQuestion, choices, question} = options
+  function updateMessage(){
+    if (options.message){
+      agent.show()
 
-    clippy.load(options.agent, nextAgent => {
+      balloon = document.querySelector('.clippy-balloon')
+      console.log('balloon', balloon)
+      if (!balloon){
+        agent.speak(options.message)
+      } else {
+        balloon.querySelector('.clippy-content').innerHTML = options.message
+        balloon.style.display = 'block'
+      }
+    }
+
+    if (gotchaTimeout)
+      clearTimeout(gotchaTimeout)
+
+    console.log('y')
+    gotchaTimeout = setTimeout(() => {
+      console.log('x', agent)
+      agent.closeBalloon()
+      agent.stop()
+      agent.speak(options.gotchaMessage)
+    },
+    GOTCHA_DELAY)
+  }
+
+  function updateElement() {
+    clippy.load("Clippy", nextAgent => {
       agent = nextAgent
       agent.show()
 
-      if (askQuestion && question && choices.length) {
-        const choicesTexts = choices.map(choice => choice.text)
-
-        agent.ask(question, choicesTexts, choiceIndex => {
-          agent.stop()
-          agent.speak(choices[choiceIndex].answer)
-        })
-      }
+      updateMessage()
     },
     () => null,
     ASSET_PATH)
@@ -39,22 +57,11 @@
     updateElement()
   }
 
-  INSTALL_SCOPE = { // eslint-disable-line no-native-reassign
+  INSTALL_SCOPE = {
     setOptions(nextOptions) {
-      clearTimeout(rateTimeout)
-
       options = nextOptions
 
-      rateTimeout = setTimeout(() => {
-        agent.hide(true, () => {
-          agent._el.remove()
-
-          // The animation queue is slow repaint balloons. This speeds things up.
-          Array.from(document.querySelector(".clippy-balloon")).forEach(unmountNode)
-
-          updateElement()
-        })
-      }, RATE_LIMIT)
+      updateMessage()
     }
   }
 }())
