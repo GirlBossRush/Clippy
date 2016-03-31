@@ -3,40 +3,31 @@
   if (!window.addEventListener) return
 
   const ASSET_PATH = "//s3.amazonaws.com/clippy.js/Agents/"
-  const GOTCHA_DELAY = 1000 * 5
+  const GOTCHA_DELAY = 1000 * 8
+  const UPDATE_DELAY = 1500
+
   let agent
   let gotchaTimeout
+  let updateTimeout
   let options = INSTALL_OPTIONS
 
-  function unmountNode(node) {
-    if (node && node.parentNode) node.parentNode.removeChild(node)
-  }
-
   function updateMessage(){
-    if (options.message){
-      agent.show()
+    clearTimeout(gotchaTimeout)
 
-      balloon = document.querySelector('.clippy-balloon')
-      console.log('balloon', balloon)
-      if (!balloon){
-        agent.speak(options.message)
-      } else {
-        balloon.querySelector('.clippy-content').innerHTML = options.message
-        balloon.style.display = 'block'
-      }
+    if (options.message) {
+      agent.stop()
+
+      agent.speak(options.message)
     }
 
-    if (gotchaTimeout)
-      clearTimeout(gotchaTimeout)
-
-    console.log('y')
-    gotchaTimeout = setTimeout(() => {
-      console.log('x', agent)
-      agent.closeBalloon()
-      agent.stop()
-      agent.speak(options.gotchaMessage)
-    },
-    GOTCHA_DELAY)
+    if (options.gotchaMessage) {
+      gotchaTimeout = setTimeout(() => {
+        agent.closeBalloon()
+        agent.stop()
+        agent.speak(options.gotchaMessage)
+      },
+      GOTCHA_DELAY)
+    }
   }
 
   function updateElement() {
@@ -59,9 +50,10 @@
 
   INSTALL_SCOPE = {
     setOptions(nextOptions) {
-      options = nextOptions
+      clearTimeout(updateTimeout)
 
-      updateMessage()
+      options = nextOptions
+      updateTimeout = setTimeout(updateMessage, UPDATE_DELAY)
     }
   }
 }())
