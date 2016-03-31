@@ -32,8 +32,12 @@
   "preview": {
     "handlers": [
       {
-        "options": ["*"],
-        "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
+        "options": ["agentName"],
+        "execute": "INSTALL_SCOPE.setAgent(INSTALL_OPTIONS)"
+      },
+      {
+        "options": ["message", "gotchaMessage"],
+        "execute": "INSTALL_SCOPE.setMessage(INSTALL_OPTIONS)"
       }
     ]
   },
@@ -52,6 +56,25 @@
         "type": "string",
         "format": "textarea",
         "default": "Gotcha! Happy April Fools!"
+      },
+      "agentName": {
+        "default": "Clippy",
+        "description": "What character should appear on the site?",
+        "order": 3,
+        "title": "Custom character",
+        "type": "string",
+        "enum": [
+          "Clippy",
+          "Bonzi",
+          "F1",
+          "Genie",
+          "Genius",
+          "Links",
+          "Merlin",
+          "Peedy",
+          "Rocky",
+          "Rover"
+        ]
       }
     }
   }

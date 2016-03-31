@@ -11,6 +11,10 @@
   let updateTimeout;
   let options = INSTALL_OPTIONS;
 
+  function unmountNode(node) {
+    if (node && node.parentNode) node.parentNode.removeChild(node);
+  }
+
   function updateMessage() {
     clearTimeout(gotchaTimeout);
 
@@ -30,7 +34,7 @@
   }
 
   function updateElement() {
-    clippy.load("Clippy", nextAgent => {
+    clippy.load(options.agentName, nextAgent => {
       agent = nextAgent;
       agent.show();
 
@@ -45,7 +49,19 @@
   }
 
   INSTALL_SCOPE = {
-    setOptions(nextOptions) {
+    setAgent(nextOptions) {
+      clearTimeout(updateTimeout);
+      clearTimeout(gotchaTimeout);
+
+      options = nextOptions;
+      agent._el.remove();
+
+      // The animation queue is slow repaint balloons. This speeds things up.
+      Array.from(document.querySelector(".clippy-balloon")).forEach(unmountNode);
+
+      updateElement();
+    },
+    setMessage(nextOptions) {
       clearTimeout(updateTimeout);
 
       options = nextOptions;
