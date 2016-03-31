@@ -688,7 +688,7 @@ clippy.Balloon = function (targetEl) {
 };
 
 clippy.Balloon.prototype = {
-    WORD_SPEAK_TIME:200,
+    WORD_SPEAK_TIME:150,
     CLOSE_BALLOON_DELAY:2000,
 
     _setup:function () {
@@ -787,8 +787,8 @@ clippy.Balloon.prototype = {
         // add the text
         c.text(text);
         // set height
-        c.height(c.height());
-        c.width(c.width());
+        c.height(c.height() * 1.1);
+        c.width(c.width() * 1.1);
         c.text('');
         this.reposition();
 
@@ -799,9 +799,9 @@ clippy.Balloon.prototype = {
     ask:function (complete, text, choiceTexts, callback) {
         var choices = [];
         for (var i = 0; i < choiceTexts.length; i++) {
-       d = $('<a class="clippy-choice"></a>').text(choiceTexts[i])
+           d = $('<a class="clippy-choice" data-choice-index=' + i + '></a>').text(choiceTexts[i])
            choices.push(d);
-    }
+        }
 
         this._hidden = false;
         this.show();
@@ -853,7 +853,7 @@ clippy.Balloon.prototype = {
                 $(".clippy-choice").click(function() {
                     self.close(true);
                     if (callback) {
-                        callback($(this).text());
+                        callback(parseInt(this.getAttribute('data-choice-index'), 10));
                     }
                 });
                 if (!isQuestion && callback) {

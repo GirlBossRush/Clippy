@@ -36,7 +36,7 @@
       "agent": {
         "default": "Clippy",
         "description": "What character should appear on the site?",
-        "order": 3,
+        "order": 1,
         "title": "Character",
         "type": "string",
         "enum": [
@@ -51,6 +51,45 @@
           "Rocky",
           "Rover"
         ]
+      },
+      "askQuestion": {
+        "order": 2,
+        "title": "Ask the user a question",
+        "description": "Enable this to have the character present a list of questions.",
+        "type": "boolean",
+        "default": false
+      },
+      "question": {
+        "showIf": "askQuestion",
+        "order": 3,
+        "title": "What should the character say?",
+        "description": "This will appear in a speech bubble.",
+        "type": "string"
+      },
+      "choices": {
+        "showIf": "askQuestion",
+        "order": 4,
+        "type": "array",
+        "title": "What choices should be given?",
+        "description": "The response will be read after making a choice.",
+        "items": {
+          "title": "Choices",
+          "type": "object",
+          "properties": {
+            "text": {
+              "order": 1,
+              "title": "Choice text",
+              "placeholder": "Choice text",
+              "type": "string"
+            },
+            "answer": {
+              "order": 2,
+              "title": "Choice response",
+              "placeholder": "Choice response",
+              "type": "string"
+            }
+          }
+        }
       }
     }
   }

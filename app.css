@@ -1,4 +1,9 @@
 .clippy, [class^="clippy-"], .questions {
+  background-color: inherit;
   margin: 0;
   padding: 0;
+}
+
+.clippy-balloon {
+  width: auto;
 }
