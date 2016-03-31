@@ -1,0 +1,58 @@
+{
+  "resources": {
+    "head": [
+      {
+        "src": "vendor/clippy.css",
+        "type": "style"
+      },
+      {
+        "src": "app.css",
+        "type": "style"
+      },
+      {
+        "src": "vendor/jquery-2.2.2.min.js",
+        "type": "script"
+      },
+      {
+        "src": "vendor/clippy.js",
+        "type": "script"
+      },
+      {
+        "type": "script",
+        "src": "./build/app.js"
+      }
+    ]
+  },
+  "preview": {
+    "handlers": [
+      {
+        "options": ["*"],
+        "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
+      }
+    ]
+  },
+  "options": {
+    "properties": {
+      "agent": {
+        "default": "Clippy",
+        "description": "What character should appear on the site?",
+        "order": 3,
+        "title": "Character",
+        "type": "string",
+        "enum": [
+          "Clippy",
+          "Bonzi",
+          "F1",
+          "Genie",
+          "Genius",
+          "Links",
+          "Merlin",
+          "Peedy",
+          "Rocky",
+          "Rover"
+        ]
+      }
+    }
+  }
+}
+

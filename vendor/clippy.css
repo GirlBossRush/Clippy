@@ -1,0 +1,72 @@
+.clippy, .clippy-balloon {
+    position: fixed !important;
+    z-index: 1000 !important;
+    cursor: pointer !important;
+}
+
+.clippy-balloon {
+    background: #FFC !important;
+    color: black !important;
+    padding: 8px !important;
+    border: 1px solid black !important;
+    border-radius: 5px !important;
+}
+
+.clippy-content {
+    background: #FFC !important;
+    max-width: 200px !important;
+    min-width: 120px !important;
+    font-family: "Microsoft Sans", sans-serif !important;
+    font-size: 10pt !important;
+}
+
+.clippy-tip {
+    width: 10px;
+    height: 16px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAgAgMAAABvDLAlAAAACVBMVEUAAAD//8wAAACRWNQ+AAAAAXRSTlMAQObYZgAAAGFJREFUCNdtziEOwCAUA9BmbtxjyTgQZEFN0ltwCTwGwylXUjvzDPy26IkpY8qCKCtO+SLIgaMzN0ACmCzy4iMjqwwc8mDbri3WBveffvVPXznBaU52ixvd7iVe5YVe6+UfnNwnB8+ZFdkAAAAASUVORK5CYII=)  no-repeat;
+    position: absolute;
+}
+
+.clippy-top-left .clippy-tip {
+    top: 100% !important;
+    margin-top: 0px !important;
+    left: 100% !important;
+    margin-left: -50px !important;
+}
+
+.clippy-top-right .clippy-tip {
+    top: 100% !important;
+    margin-top: 0px !important;
+    left: 0 !important;
+    margin-left: 50px !important;
+    background-position: -10px 0 !important;
+}
+
+.clippy-bottom-right .clippy-tip {
+    top: 0 !important;
+    margin-top: -16px !important;
+    left: 0 !important;
+    margin-left: 50px !important;
+    background-position: -10px -16px !important;
+}
+
+.clippy-bottom-left .clippy-tip {
+    top: 0 !important;
+    margin-top: -16px !important;
+    left: 100% !important;
+    margin-left: -50px !important;
+    background-position: 0px -16px !important;
+}
+
+.clippy-choice {
+    display: block !important;
+    margin: 0.5em 0 !important;
+    padding-left: 22px !important;
+    text-decoration: none !important;
+    color: #000080 !important;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKBAMAAAB/HNKOAAAALVBMVEUAAAAAM2YAM5n///+ysrIAZpkzM8yGhoYAmcwzzMx3d3eZ//9m//8zmcwzZpmZ9prkAAAAAXRSTlMAQObYZgAAAERJREFUCNdjYPAqd2BgYKlLVGFgcI8NVHJgKEpVTFRmWKjYESjM4CjWM1WZwVG1e5oyA4tQWKABA4OhkDIDAwOzsQEDAH2RC4gqiJwcAAAAAElFTkSuQmCC) 4px center no-repeat;
+}
+
+.clippy-choice:hover {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAPFBMVEUAAAAAZpn///+ysrIAM5kAM2aGhoYzZpkAmcyZ//8zzP8z//8AzP//+/BmzMwAzMwAZswzmZkAmZkzM5k2EqaPAAAAAXRSTlMAQObYZgAAAEpJREFUCNcdyFsWgDAIA9EEAq31rfvfq9j5umcAeGY6MNVE+dRNtmA52a+tU82Q8ZzL2hkGJ4ctfFVU4zGouvAQg6XKQmJperdfH157AZiSJ5KvAAAAAElFTkSuQmCC);
+}
