@@ -7,7 +7,7 @@
   "ecmaVersion": 7,
   "globals": {
     "clippy": false,
-    "Eager": false,
+    "INSTALL": false,
     "INSTALL_OPTIONS": false,
     "INSTALL_SCOPE": false,
   },

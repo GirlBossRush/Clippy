@@ -1,7 +1,7 @@
 {
-  "name": "eager-clippy",
+  "name": "cloudflare-app-clippy",
   "version": "0.0.0",
-  "description": "Clippy.js for [Eager](https://eager.io).",
+  "description": "Clippy.js for [Cloudflare Apps](https://cloudflare.com/apps).",
   "main": "app.js",
   "scripts": {
     "start": "babel --watch --out-dir build app.js",
@@ -11,13 +11,14 @@
     "type": "git",
     "url": "git+https://github.com/TeffenEllis/Clippy.git"
   },
-  "author": "Eager Platform Co.",
+  "author": "Cloudflare Inc.",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/TeffenEllis/Clippy/issues"
   },
   "homepage": "https://github.com/TeffenEllis/Clippy#readme",
   "dependencies": {
+    "zepto": "^1.2.0"
   },
   "devDependencies": {
     "babel-cli": "6.4.5",

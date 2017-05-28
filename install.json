@@ -10,15 +10,36 @@
         "type": "style"
       },
       {
+        "src": "node_modules/zepto/dist/zepto.js",
+        "type": "script"
+      },
+      {
+        "src": "node_modules/zepto/src/deferred.js",
+        "type": "script"
+      },
+      {
+        "src": "node_modules/zepto/src/callbacks.js",
+        "type": "script"
+      },
+      {
+        "src": "node_modules/zepto/src/fx.js",
+        "type": "script"
+      },
+      {
+        "src": "node_modules/zepto/src/fx_methods.js",
+        "type": "script"
+      },
+      {
+        "src": "node_modules/zepto/src/selector.js",
+        "type": "script"
+      },
+      {
+        "src": "vendor/zepto-extras.js",
+        "type": "script"
+      },
+      {
         "src": "vendor/clippy.js",
-        "type": "script",
-        "moduleType": "global",
-        "exports": [
-          "clippy"
-        ],
-        "depends": {
-          "github.com/jquery/jquery:jquery.js": "$"
-        }
+        "type": "script"
       },
       {
         "type": "script",
